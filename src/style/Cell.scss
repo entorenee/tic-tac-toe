@@ -1,0 +1,42 @@
+td {
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+#cell-0 {
+  border-left: none;
+  border-top: none;
+}
+
+#cell-1 {
+  border-top: none;
+}
+
+#cell-2 {
+  border-top: none;
+  border-right: none;
+}
+
+#cell-3 {
+  border-left: none;
+}
+
+#cell-5 {
+  border-right: none;
+}
+
+#cell-6 {
+  border-left: none;
+  border-bottom: none;
+}
+
+#cell-7 {
+  border-bottom: none;
+}
+
+#cell-8 {
+  border-right: none;
+  border-bottom: none;
+}
