@@ -3,6 +3,11 @@ td {
   height: 100px;
   border: 2px solid black;
   border-collapse: collapse;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 72px;
+  user-select: none;
+  cursor: pointer;
 }
 
 #cell-0 {
