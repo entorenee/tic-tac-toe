@@ -19,6 +19,15 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
+    var winnerInfo = document.getElementById('gameWinner');
+    // Necessary to change to previous player as state has already changed to new player
+    var player = this.state.currPlayer === "X" ? "O" : "X";
+    if (this.checkWinningCombos(this.state.cellValues, player)) {
+      winnerInfo.innerHTML = player + " won";
+    } else if (this.state.cellValues.indexOf("E") === -1) {
+      winnerInfo.innerHTML = "It's a tie.";
+    }
+
     if (this.state.currPlayer === this.state.computer && this.state.cellValues.indexOf('E') > -1) {
       this.computerSelectCell();
     }
@@ -29,12 +38,6 @@ class App extends React.Component {
        var states = {...this.state};
        states.cellValues[cellId] = this.state.currPlayer;
        states.currPlayer = this.state.computer;
-       var winnerInfo = document.getElementById('gameWinner');
-       if (this.checkWinningCombos(states.cellValues, this.state.currPlayer)) {
-         winnerInfo.innerHTML = this.state.currPlayer + " won";
-       } else if (states.cellValues.indexOf("E") === -1) {
-         winnerInfo.innerHTML = "It's a tie.";
-       }
 
        this.setState({...states});
     }
@@ -60,9 +63,7 @@ class App extends React.Component {
       return cell;
     }
 
-    // var emptyCell = randomCell(this.state.cellValues);
-    var emptyCell = this.state.cellValues.indexOf('E');
-    console.log(emptyCell);
+    var emptyCell = randomCell(this.state.cellValues);
     states.cellValues[emptyCell] = "O";
     states.currPlayer = "X";
     this.setState({...states});
