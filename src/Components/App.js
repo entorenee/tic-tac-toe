@@ -13,6 +13,7 @@ class App extends React.Component {
 
     this.playerSelectCell = this.playerSelectCell.bind(this);
     this.checkWinningCombos = this.checkWinningCombos.bind(this);
+    this.computerSelectCell = this.computerSelectCell.bind(this);
   }
 
   playerSelectCell(cellValue, cellId) {
@@ -28,8 +29,37 @@ class App extends React.Component {
        }
 
        this.setState({...states});
+
+       if (states.currPlayer === "O") {
+         this.computerSelectCell();
+       }
     }
 
+  }
+
+  computerSelectCell() {
+    // first check if can win. If so, select win.
+    // second check if need to block.
+    // if none of above are possible select empty cell.
+    var states = {...this.state};
+
+    function randomCell(cellValues) {
+      var cell,
+      blankCell = false;
+
+      while (!blankCell) {
+        cell = Math.floor(Math.random() * 8);
+        if (cellValues[cell] === "E") {
+          blankCell = true;
+        }
+      }
+      return cell;
+    }
+
+    var emptyCell = randomCell(this.state.cellValues);
+    states.cellValues[emptyCell] = "O";
+    states.currPlayer = "X";
+    this.setState({...states});
   }
 
   checkWinningCombos(cellValues, currPlayer) {
