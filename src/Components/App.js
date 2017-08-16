@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.state.currPlayer === this.state.computer) {
+    if (this.state.currPlayer === this.state.computer && this.state.cellValues.indexOf('E') > -1) {
       this.computerSelectCell();
     }
   }
