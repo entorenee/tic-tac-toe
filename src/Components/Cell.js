@@ -4,7 +4,7 @@ import '../style/Cell.css'
 
 class Cell extends React.Component {
   render() {
-    var cellValue = this.props.cellValue !== "none" ? this.props.cellValue : "";
+    var cellValue = this.props.cellValue !== "E" ? this.props.cellValue : "";
     return (
       <td id={"cell-" + this.props.id} onClick={() => this.props.playerSelectCell(this.props.cellValue, this.props.id)}>
         {cellValue}

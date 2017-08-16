@@ -7,21 +7,48 @@ class App extends React.Component {
     super();
 
     this.state = {
-      cellValues: ["none","none","none","none","none","none","none","none","none"], // Used to track who controls each space.
+      cellValues: ["E","E","E","E","E","E","E","E","E"], // Used to track who controls each space.
       currPlayer: "X"
     };
 
     this.playerSelectCell = this.playerSelectCell.bind(this);
+    this.checkWinningCombos = this.checkWinningCombos.bind(this);
   }
 
   playerSelectCell(cellValue, cellId) {
-    if (cellValue === "none") {
+    if (cellValue === "E") {
        var states = {...this.state};
        states.cellValues[cellId] = this.state.currPlayer;
        states.currPlayer = this.state.currPlayer === "X" ? "O" : "X";
+       if (this.checkWinningCombos(states.cellValues, this.state.currPlayer)) {
+         console.log(this.state.currPlayer + " won!");
+       } else if (states.cellValues.indexOf("E") === -1) {
+         console.log ("It's a tie");
+       }
+
        this.setState({...states});
     }
 
+  }
+
+  checkWinningCombos(cellValues, currPlayer) {
+    var winningCombos = [
+      ["0","1","2"],
+      ["3","4","5"],
+      ["6","7","8"],
+      ["0","3","6"],
+      ["1","4","7"],
+      ["2","5","8"],
+      ["0","4","8"],
+      ["2","4","6"]
+    ]
+    for (var i=0; i < winningCombos.length; i++) {
+      let arr = winningCombos[i];
+      if (cellValues[arr[0]] === currPlayer && cellValues[arr[1]] === currPlayer && cellValues[arr[2]] === currPlayer) {
+        return true;
+      }
+    }
+    return false;
   }
 
   render() {
