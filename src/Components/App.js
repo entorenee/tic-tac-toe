@@ -23,8 +23,15 @@ class App extends React.Component {
        var winnerInfo = document.getElementById('gameWinner');
        if (this.checkWinningCombos(states.cellValues, this.state.currPlayer)) {
          winnerInfo.innerHTML = this.state.currPlayer + " won";
+<<<<<<< HEAD
        } else if (states.cellValues.indexOf("E") === -1) {
          winnerInfo.innerHTML = "It's a tie.";
+=======
+         console.log(this.state.currPlayer + " won!");
+       } else if (states.cellValues.indexOf("E") === -1) {
+         winnerInfo.innerHTML = "It's a tie.";
+        console.log ("It's a tie");
+>>>>>>> 58409b3376bcfe63ac4816af990976c2e813378c
        }
 
        this.setState({...states});
