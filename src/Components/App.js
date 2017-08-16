@@ -8,7 +8,9 @@ class App extends React.Component {
 
     this.state = {
       cellValues: ["E","E","E","E","E","E","E","E","E"], // Used to track who controls each space.
-      currPlayer: "X"
+      currPlayer: "X",
+      player: "X",
+      computer: "O"
     };
 
     this.playerSelectCell = this.playerSelectCell.bind(this);
@@ -16,11 +18,17 @@ class App extends React.Component {
     this.computerSelectCell = this.computerSelectCell.bind(this);
   }
 
+  componentDidUpdate() {
+    if (this.state.currPlayer === this.state.computer) {
+      this.computerSelectCell();
+    }
+  }
+
   playerSelectCell(cellValue, cellId) {
-    if (cellValue === "E") {
+    if (cellValue === "E" && this.state.currPlayer === this.state.player) {
        var states = {...this.state};
        states.cellValues[cellId] = this.state.currPlayer;
-       states.currPlayer = this.state.currPlayer === "X" ? "O" : "X";
+       states.currPlayer = this.state.computer;
        var winnerInfo = document.getElementById('gameWinner');
        if (this.checkWinningCombos(states.cellValues, this.state.currPlayer)) {
          winnerInfo.innerHTML = this.state.currPlayer + " won";
@@ -29,10 +37,6 @@ class App extends React.Component {
        }
 
        this.setState({...states});
-
-       if (states.currPlayer === "O") {
-         this.computerSelectCell();
-       }
     }
 
   }
@@ -56,7 +60,9 @@ class App extends React.Component {
       return cell;
     }
 
-    var emptyCell = randomCell(this.state.cellValues);
+    // var emptyCell = randomCell(this.state.cellValues);
+    var emptyCell = this.state.cellValues.indexOf('E');
+    console.log(emptyCell);
     states.cellValues[emptyCell] = "O";
     states.currPlayer = "X";
     this.setState({...states});
