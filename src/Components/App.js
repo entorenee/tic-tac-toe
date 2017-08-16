@@ -20,10 +20,13 @@ class App extends React.Component {
        var states = {...this.state};
        states.cellValues[cellId] = this.state.currPlayer;
        states.currPlayer = this.state.currPlayer === "X" ? "O" : "X";
+       var winnerInfo = document.getElementById('gameWinner');
        if (this.checkWinningCombos(states.cellValues, this.state.currPlayer)) {
+         winnerInfo.innerHTML = this.state.currPlayer + " won";
          console.log(this.state.currPlayer + " won!");
        } else if (states.cellValues.indexOf("E") === -1) {
-         console.log ("It's a tie");
+         winnerInfo.innerHTML = "It's a tie.";
+        console.log ("It's a tie");
        }
 
        this.setState({...states});
@@ -53,25 +56,28 @@ class App extends React.Component {
 
   render() {
     return (
-      <table>
-        <tbody>
-          <tr>
-            <Cell id="0" cellValue={this.state.cellValues[0]} playerSelectCell={this.playerSelectCell} />
-            <Cell id="1" cellValue={this.state.cellValues[1]} playerSelectCell={this.playerSelectCell} />
-            <Cell id="2" cellValue={this.state.cellValues[2]} playerSelectCell={this.playerSelectCell} />
-          </tr>
-          <tr>
-            <Cell id="3" cellValue={this.state.cellValues[3]} playerSelectCell={this.playerSelectCell} />
-            <Cell id="4" cellValue={this.state.cellValues[4]} playerSelectCell={this.playerSelectCell} />
-            <Cell id="5" cellValue={this.state.cellValues[5]} playerSelectCell={this.playerSelectCell} />
-          </tr>
-          <tr>
-            <Cell id="6" cellValue={this.state.cellValues[6]} playerSelectCell={this.playerSelectCell} />
-            <Cell id="7" cellValue={this.state.cellValues[7]} playerSelectCell={this.playerSelectCell} />
-            <Cell id="8" cellValue={this.state.cellValues[8]} playerSelectCell={this.playerSelectCell} />
-          </tr>
-        </tbody>
-      </table>
+      <div id="game">
+        <div id="gameWinner"></div>
+        <table>
+          <tbody>
+            <tr>
+              <Cell id="0" cellValue={this.state.cellValues[0]} playerSelectCell={this.playerSelectCell} />
+              <Cell id="1" cellValue={this.state.cellValues[1]} playerSelectCell={this.playerSelectCell} />
+              <Cell id="2" cellValue={this.state.cellValues[2]} playerSelectCell={this.playerSelectCell} />
+            </tr>
+            <tr>
+              <Cell id="3" cellValue={this.state.cellValues[3]} playerSelectCell={this.playerSelectCell} />
+              <Cell id="4" cellValue={this.state.cellValues[4]} playerSelectCell={this.playerSelectCell} />
+              <Cell id="5" cellValue={this.state.cellValues[5]} playerSelectCell={this.playerSelectCell} />
+            </tr>
+            <tr>
+              <Cell id="6" cellValue={this.state.cellValues[6]} playerSelectCell={this.playerSelectCell} />
+              <Cell id="7" cellValue={this.state.cellValues[7]} playerSelectCell={this.playerSelectCell} />
+              <Cell id="8" cellValue={this.state.cellValues[8]} playerSelectCell={this.playerSelectCell} />
+            </tr>
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
