@@ -49,6 +49,48 @@ class App extends React.Component {
     // second check if need to block.
     // if none of above are possible select empty cell.
     var states = {...this.state};
+    var blockWin = checkForPotentialWinOrBlock(this.state.cellValues, this.state.player);
+    if (typeof blockWin === 'string') {
+      states.cellValues[blockWin] = "O";
+      states.currPlayer = "X"
+    } else {
+      var emptyCell = randomCell(this.state.cellValues);
+      states.cellValues[emptyCell] = "O";
+      states.currPlayer = "X";
+    }
+
+    this.setState({...states});
+
+    function checkForPotentialWinOrBlock(cellValues, player) {
+      var winningCombos = [
+        ["0","1","2"],
+        ["3","4","5"],
+        ["6","7","8"],
+        ["0","3","6"],
+        ["1","4","7"],
+        ["2","5","8"],
+        ["0","4","8"],
+        ["2","4","6"]
+      ];
+
+      for (var i=0; i < winningCombos.length; i++) {
+        let controlled = [];
+        let trueCount = 0;
+        for (var j=0; j < 3; j++) {
+          let value = winningCombos[i][j];
+          if (cellValues[value] === player) {
+            controlled.push(true);
+            trueCount++;
+          } else {
+            controlled.push(false);
+          }
+        } // End winningCombos subarray for loop
+        var index = controlled.indexOf(false);
+        if (trueCount === 2 && cellValues[winningCombos[i][index]] === "E") {
+          return winningCombos[i][index];
+        }
+      } // End winningCombos for loop
+    }
 
     function randomCell(cellValues) {
       var cell,
@@ -63,10 +105,6 @@ class App extends React.Component {
       return cell;
     }
 
-    var emptyCell = randomCell(this.state.cellValues);
-    states.cellValues[emptyCell] = "O";
-    states.currPlayer = "X";
-    this.setState({...states});
   }
 
   checkWinningCombos(cellValues, currPlayer) {
