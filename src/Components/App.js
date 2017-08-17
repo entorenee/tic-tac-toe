@@ -49,10 +49,14 @@ class App extends React.Component {
     // second check if need to block.
     // if none of above are possible select empty cell.
     var states = {...this.state};
+    var selectWin = checkForPotentialWinOrBlock(this.state.cellValues, this.state.computer);
     var blockWin = checkForPotentialWinOrBlock(this.state.cellValues, this.state.player);
-    if (typeof blockWin === 'string') {
+    if (typeof selectWin === 'string') {
+      states.cellValues[selectWin] = "O";
+      states.currPlayer = "X";
+    } else if (typeof blockWin === 'string') {
       states.cellValues[blockWin] = "O";
-      states.currPlayer = "X"
+      states.currPlayer = "X";
     } else {
       var emptyCell = randomCell(this.state.cellValues);
       states.cellValues[emptyCell] = "O";
