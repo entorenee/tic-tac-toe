@@ -26,9 +26,7 @@ class App extends React.Component {
       winnerInfo.innerHTML = player + " won";
     } else if (this.state.cellValues.indexOf("E") === -1) {
       winnerInfo.innerHTML = "It's a tie.";
-    }
-
-    if (this.state.currPlayer === this.state.computer && this.state.cellValues.indexOf('E') > -1) {
+    } else if (this.state.currPlayer === this.state.computer && this.state.cellValues.indexOf('E') > -1) {
       this.computerSelectCell();
     }
   }
@@ -52,15 +50,15 @@ class App extends React.Component {
     var selectWin = checkForPotentialWinOrBlock(this.state.cellValues, this.state.computer);
     var blockWin = checkForPotentialWinOrBlock(this.state.cellValues, this.state.player);
     if (typeof selectWin === 'string') {
-      states.cellValues[selectWin] = "O";
-      states.currPlayer = "X";
+      states.cellValues[selectWin] = this.state.computer;
+      states.currPlayer = this.state.player;
     } else if (typeof blockWin === 'string') {
-      states.cellValues[blockWin] = "O";
-      states.currPlayer = "X";
+      states.cellValues[blockWin] = this.state.computer;
+      states.currPlayer = this.state.player;
     } else {
       var emptyCell = randomCell(this.state.cellValues);
-      states.cellValues[emptyCell] = "O";
-      states.currPlayer = "X";
+      states.cellValues[emptyCell] = this.state.computer;
+      states.currPlayer = this.state.player;
     }
 
     this.setState({...states});
