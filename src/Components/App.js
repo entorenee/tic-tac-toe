@@ -72,9 +72,6 @@ class App extends React.Component {
   }
 
   computerSelectCell() {
-    // first check if can win. If so, select win.
-    // second check if need to block.
-    // if none of above are possible select empty cell.
     var states = {...this.state};
     var selectWin = checkForPotentialWinOrBlock(this.state.cellValues, this.state.computer);
     var blockWin = checkForPotentialWinOrBlock(this.state.cellValues, this.state.player);
