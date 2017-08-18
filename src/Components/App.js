@@ -1,5 +1,6 @@
 import React from 'react';
 import Cell from './Cell';
+import MarkerSelector from './MarkerSelector';
 import '../style/App.css';
 
 class App extends React.Component {
@@ -9,13 +10,14 @@ class App extends React.Component {
     this.state = {
       cellValues: ["E","E","E","E","E","E","E","E","E"], // Used to track who controls each space.
       currPlayer: "X",
-      player: "X",
-      computer: "O"
+      player: "",
+      computer: ""
     };
 
     this.playerSelectCell = this.playerSelectCell.bind(this);
     this.checkWinningCombos = this.checkWinningCombos.bind(this);
     this.computerSelectCell = this.computerSelectCell.bind(this);
+    this.playerSelectMarker = this.playerSelectMarker.bind(this);
   }
 
   componentDidUpdate() {
@@ -29,6 +31,15 @@ class App extends React.Component {
     } else if (this.state.currPlayer === this.state.computer && this.state.cellValues.indexOf('E') > -1) {
       this.computerSelectCell();
     }
+  }
+
+  playerSelectMarker(marker) {
+    var states = {};
+    var computer = marker === "X" ? "O" : "X";
+    states.player = marker;
+    states.computer = computer;
+    document.getElementById('player-selector-modal').style.display="none";
+    this.setState({...states});
   }
 
   playerSelectCell(cellValue, cellId) {
@@ -132,6 +143,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="game">
+        <MarkerSelector playerSelectMarker={this.playerSelectMarker}/>
         <div id="gameWinner"></div>
         <table>
           <tbody>
