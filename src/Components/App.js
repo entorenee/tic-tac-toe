@@ -18,6 +18,7 @@ class App extends React.Component {
     this.checkWinningCombos = this.checkWinningCombos.bind(this);
     this.computerSelectCell = this.computerSelectCell.bind(this);
     this.playerSelectMarker = this.playerSelectMarker.bind(this);
+    this.clearBoard = this.clearBoard.bind(this);
   }
 
   componentDidUpdate() {
@@ -25,12 +26,25 @@ class App extends React.Component {
     // Necessary to change to previous player as state has already changed to new player
     var player = this.state.currPlayer === "X" ? "O" : "X";
     if (this.checkWinningCombos(this.state.cellValues, player)) {
-      winnerInfo.innerHTML = player + " won";
+      winnerInfo.innerHTML = player + " won!";
+      this.clearBoard();
     } else if (this.state.cellValues.indexOf("E") === -1) {
-      winnerInfo.innerHTML = "It's a tie.";
+      winnerInfo.innerHTML = "It's a tie!";
+      this.clearBoard();
     } else if (this.state.currPlayer === this.state.computer && this.state.cellValues.indexOf('E') > -1) {
       this.computerSelectCell();
     }
+  }
+
+  clearBoard() {
+    setTimeout(() => {
+      var winnerInfo = document.getElementById('gameWinner');
+      var states = {};
+      states.cellValues = ["E","E","E","E","E","E","E","E","E"];
+      states.currPlayer = "X";
+      winnerInfo.innerHTML = "";
+      this.setState({...states});
+    }, 3000);
   }
 
   playerSelectMarker(marker) {
