@@ -11,7 +11,8 @@ class App extends React.Component {
       cellValues: ["E","E","E","E","E","E","E","E","E"], // Used to track who controls each space.
       currPlayer: "X",
       player: "",
-      computer: ""
+      computer: "",
+      gameOver: false
     };
 
     this.playerSelectCell = this.playerSelectCell.bind(this);
@@ -27,9 +28,11 @@ class App extends React.Component {
     var player = this.state.currPlayer === "X" ? "O" : "X";
     if (this.checkWinningCombos(this.state.cellValues, player)) {
       winnerInfo.innerHTML = player + " WON!";
+      this.setState({gameOver: true});
       this.clearBoard();
     } else if (this.state.cellValues.indexOf("E") === -1) {
       winnerInfo.innerHTML = "IT'S A TIE!";
+      this.setState({gameOver: true});
       this.clearBoard();
     } else if (this.state.currPlayer === this.state.computer && this.state.cellValues.indexOf('E') > -1) {
       this.computerSelectCell();
@@ -40,9 +43,11 @@ class App extends React.Component {
     setTimeout(() => {
       var winnerInfo = document.getElementById('gameWinner');
       var cells = document.querySelectorAll('td');
-      var states = {};
-      states.cellValues = ["E","E","E","E","E","E","E","E","E"];
-      states.currPlayer = "X";
+      var states = {
+        cellValues: ["E","E","E","E","E","E","E","E","E"],
+        currPlayer: "X",
+        gameOver: false
+      };
       winnerInfo.innerHTML = "";
       for (var i=0; i < cells.length; i++) {
         cells[i].classList.remove("o-marker", "x-marker");
@@ -61,7 +66,7 @@ class App extends React.Component {
   }
 
   playerSelectCell(cellValue, cellId) {
-    if (cellValue === "E" && this.state.currPlayer === this.state.player) {
+    if (cellValue === "E" && this.state.currPlayer === this.state.player && this.state.gameOver === false) {
        var states = {...this.state};
        states.cellValues[cellId] = this.state.currPlayer;
        states.currPlayer = this.state.computer;
