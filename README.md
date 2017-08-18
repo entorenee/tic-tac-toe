@@ -1,0 +1,3 @@
+#Tic Tac Toe Game
+
+This project is my variation of the [Tic Tac Toe game](https://www.freecodecamp.com/challenges/build-a-tic-tac-toe-game) from Free Code Camp. The project is built using ReactJS. The user can choose whether they want to play as X or O. X always goes first. The computer has a simple AI that looks for opportunities to win in that turn first, then opportunities to block the player from a win, and finally if neither of those are options will select a random empty cell. The difficulty of the computer AI is moderate. Once a game is completed it will announce whether someone one or there was a tie. After three seconds the game will reset, and return to the current player being X.
