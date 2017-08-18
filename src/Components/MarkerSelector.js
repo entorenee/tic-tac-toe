@@ -9,8 +9,8 @@ class MarkerSelector extends React.Component {
         <div id="player-marker-selector">
           <h1>Choose Your Marker</h1>
           <div id="marker-wrap">
-            <div className="marker" onClick={() => this.props.playerSelectMarker("X")}>X</div>
-            <div className="marker" onClick={() => this.props.playerSelectMarker("O")}>O</div>
+            <div id="select-x" className="marker" onClick={() => this.props.playerSelectMarker("X")}>X</div>
+            <div id="select-o" className="marker" onClick={() => this.props.playerSelectMarker("O")}>O</div>
           </div>
         </div>
       </div>

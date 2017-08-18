@@ -1,5 +1,5 @@
 #player-selector-modal {
-  background-color: rgba(black, 0.3);
+  background-color: rgba(black, 0.5);
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
 #player-marker-selector {
   width: 300px;
   height: 250px;
-  background-color: blue;
+  background-color: #EFECCA;
   position: relative;
   top: 15%;
   margin: 0 auto;
@@ -19,7 +19,9 @@
 
   h1 {
     text-align: center;
-    padding-top: 10%;
+    font-family: 'Bitter', serif;
+    color: #1F1456;
+    padding-top: 6%;
   }
 }
 
@@ -36,10 +38,19 @@
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  background-color: pink;
-  font-size: 36px;
+  background-color: #A7A37E;
+  font-family: 'Indie Flower', cursive;
+  font-size: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+#select-x {
+  color: #046380;
+}
+
+#select-x {
+  color: #002F2F;
 }

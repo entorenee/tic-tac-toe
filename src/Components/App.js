@@ -26,10 +26,10 @@ class App extends React.Component {
     // Necessary to change to previous player as state has already changed to new player
     var player = this.state.currPlayer === "X" ? "O" : "X";
     if (this.checkWinningCombos(this.state.cellValues, player)) {
-      winnerInfo.innerHTML = player + " won!";
+      winnerInfo.innerHTML = player + " WON!";
       this.clearBoard();
     } else if (this.state.cellValues.indexOf("E") === -1) {
-      winnerInfo.innerHTML = "It's a tie!";
+      winnerInfo.innerHTML = "IT'S A TIE!";
       this.clearBoard();
     } else if (this.state.currPlayer === this.state.computer && this.state.cellValues.indexOf('E') > -1) {
       this.computerSelectCell();
@@ -39,10 +39,14 @@ class App extends React.Component {
   clearBoard() {
     setTimeout(() => {
       var winnerInfo = document.getElementById('gameWinner');
+      var cells = document.querySelectorAll('td');
       var states = {};
       states.cellValues = ["E","E","E","E","E","E","E","E","E"];
       states.currPlayer = "X";
       winnerInfo.innerHTML = "";
+      for (var i=0; i < cells.length; i++) {
+        cells[i].classList.remove("o-marker", "x-marker");
+      }
       this.setState({...states});
     }, 3000);
   }
