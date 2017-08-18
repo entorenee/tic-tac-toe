@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 import '../style/Cell.css'
 
 class Cell extends React.Component {
+
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.cellValue !== this.props.cellValue) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
     var cellValue = this.props.cellValue !== "E" ? this.props.cellValue : "";
     if (this.props.cellValue === "X") {
