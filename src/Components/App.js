@@ -26,15 +26,15 @@ class App extends React.Component {
     var winnerInfo = document.getElementById('gameWinner');
     // Necessary to change to previous player as state has already changed to new player
     var player = this.state.currPlayer === "X" ? "O" : "X";
-    if (this.checkWinningCombos(this.state.cellValues, player)) {
+    if (this.checkWinningCombos(this.state.cellValues, player) && this.state.gameOver === false) {
       winnerInfo.innerHTML = player + " WON!";
       this.setState({gameOver: true});
       this.clearBoard();
-    } else if (this.state.cellValues.indexOf("E") === -1) {
+    } else if (this.state.cellValues.indexOf("E") === -1  && this.state.gameOver === false) {
       winnerInfo.innerHTML = "IT'S A TIE!";
       this.setState({gameOver: true});
       this.clearBoard();
-    } else if (this.state.currPlayer === this.state.computer && this.state.cellValues.indexOf('E') > -1) {
+    } else if (this.state.currPlayer === this.state.computer && this.state.cellValues.indexOf('E') > -1 && this.state.gameOver === false) {
       this.computerSelectCell();
     }
   }
