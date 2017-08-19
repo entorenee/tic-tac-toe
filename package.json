@@ -4,6 +4,7 @@
   "homepage": "http://dslemay.com/projects/tic-tac-toe/",
   "private": true,
   "dependencies": {
+    "gulp": "^3.9.1",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.0.2",
     "react": "^15.6.1",
