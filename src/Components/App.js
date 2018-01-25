@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    const winnerInfo = document.getElementById('gameWinner');
+    const winnerInfo = this.gameWinner;
     // Necessary to change to previous player as state has already changed to new player
     const player = this.state.currPlayer === 'X' ? 'O' : 'X';
     if (this.checkWinningCombos(this.state.cellValues, player) && this.state.gameOver === false) {
@@ -47,7 +47,7 @@ class App extends Component {
 
   clearBoard() {
     setTimeout(() => {
-      const winnerInfo = document.getElementById('gameWinner');
+      const winnerInfo = this.gameWinner;
       const cells = document.querySelectorAll('td');
       const states = {
         cellValues: ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
@@ -176,10 +176,15 @@ class App extends Component {
 
   render() {
     return (
-      <div id="game">
+      <div className="game">
         <MarkerSelector playerSelectMarker={this.playerSelectMarker} />
-        <div id="gameWinner" />
-        <table>
+        <div
+          ref={input => {
+            this.gameWinner = input;
+          }}
+          className="game-winner"
+        />
+        <table className="game-board">
           <tbody>
             <tr>
               <Cell
