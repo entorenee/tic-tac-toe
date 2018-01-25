@@ -6,13 +6,12 @@ import '../style/MarkerSelector.css';
 const MarkerSelector = props => {
   const { playerSelectMarker } = props;
   return (
-    <div id="player-selector-modal">
-      <div id="player-marker-selector">
+    <div className="player-selector-modal">
+      <div className="player-marker-selector">
         <h1>Choose Your Marker</h1>
-        <div id="marker-wrap">
+        <div className="marker-wrap">
           <div
-            id="select-x"
-            className="marker"
+            className="marker select-x"
             onClick={() => playerSelectMarker('X')}
             onKeyPress={e => {
               if (keyboardHandler(e)) playerSelectMarker('X');
@@ -23,8 +22,7 @@ const MarkerSelector = props => {
             X
           </div>
           <div
-            id="select-o"
-            className="marker"
+            className="marker select-o"
             onClick={() => playerSelectMarker('O')}
             onKeyPress={e => {
               if (keyboardHandler(e)) playerSelectMarker('O');
