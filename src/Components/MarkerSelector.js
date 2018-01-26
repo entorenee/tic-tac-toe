@@ -6,7 +6,7 @@ import '../style/MarkerSelector.css';
 const MarkerSelector = props => {
   const { playerSelectMarker } = props;
   return (
-    <div className="player-selector-modal">
+    <div id="playerSelect" className="player-selector-modal">
       <div className="player-marker-selector">
         <h1>Choose Your Marker</h1>
         <div className="marker-wrap">

@@ -67,7 +67,7 @@ class App extends Component {
     const computer = marker === 'X' ? 'O' : 'X';
     states.player = marker;
     states.computer = computer;
-    document.getElementById('player-selector-modal').style.display = 'none';
+    document.getElementById('playerSelect').style.display = 'none';
     this.setState({ ...states });
   }
 
