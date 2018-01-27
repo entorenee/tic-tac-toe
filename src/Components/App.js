@@ -175,67 +175,32 @@ class App extends Component {
   }
 
   render() {
+    const { cellValues } = this.state;
     return (
-      <div className="game">
+      <div className="ttt-game-wrapper">
         <MarkerSelector playerSelectMarker={this.playerSelectMarker} />
         <div
           ref={input => {
             this.gameWinner = input;
           }}
-          className="game-winner"
+          className="ttt-game-winner"
         />
-        <table className="game-board">
+        <table className="ttt-game-board">
           <tbody>
             <tr>
-              <Cell
-                id="0"
-                cellValue={this.state.cellValues[0]}
-                playerSelectCell={this.playerSelectCell}
-              />
-              <Cell
-                id="1"
-                cellValue={this.state.cellValues[1]}
-                playerSelectCell={this.playerSelectCell}
-              />
-              <Cell
-                id="2"
-                cellValue={this.state.cellValues[2]}
-                playerSelectCell={this.playerSelectCell}
-              />
+              <Cell id="0" cellValue={cellValues[0]} playerSelectCell={this.playerSelectCell} />
+              <Cell id="1" cellValue={cellValues[1]} playerSelectCell={this.playerSelectCell} />
+              <Cell id="2" cellValue={cellValues[2]} playerSelectCell={this.playerSelectCell} />
             </tr>
             <tr>
-              <Cell
-                id="3"
-                cellValue={this.state.cellValues[3]}
-                playerSelectCell={this.playerSelectCell}
-              />
-              <Cell
-                id="4"
-                cellValue={this.state.cellValues[4]}
-                playerSelectCell={this.playerSelectCell}
-              />
-              <Cell
-                id="5"
-                cellValue={this.state.cellValues[5]}
-                playerSelectCell={this.playerSelectCell}
-              />
+              <Cell id="3" cellValue={cellValues[3]} playerSelectCell={this.playerSelectCell} />
+              <Cell id="4" cellValue={cellValues[4]} playerSelectCell={this.playerSelectCell} />
+              <Cell id="5" cellValue={cellValues[5]} playerSelectCell={this.playerSelectCell} />
             </tr>
             <tr>
-              <Cell
-                id="6"
-                cellValue={this.state.cellValues[6]}
-                playerSelectCell={this.playerSelectCell}
-              />
-              <Cell
-                id="7"
-                cellValue={this.state.cellValues[7]}
-                playerSelectCell={this.playerSelectCell}
-              />
-              <Cell
-                id="8"
-                cellValue={this.state.cellValues[8]}
-                playerSelectCell={this.playerSelectCell}
-              />
+              <Cell id="6" cellValue={cellValues[6]} playerSelectCell={this.playerSelectCell} />
+              <Cell id="7" cellValue={cellValues[7]} playerSelectCell={this.playerSelectCell} />
+              <Cell id="8" cellValue={cellValues[8]} playerSelectCell={this.playerSelectCell} />
             </tr>
           </tbody>
         </table>
