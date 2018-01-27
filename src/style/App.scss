@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter:400i|Indie+Flower');
 
-.game {
+.ttt-game-wrapper {
   background-color: #efecca;
   width: 100vw;
   height: 100vh;
 }
 
-.game-winner {
+.ttt-game-winner {
   text-align: center;
   color: #1f1456;
   height: 100px;
@@ -15,7 +15,7 @@
   user-select: none;
 }
 
-.game-board {
+.ttt-game-board {
   margin: 0 auto;
   margin-top: 50px;
   border-spacing: 0px;

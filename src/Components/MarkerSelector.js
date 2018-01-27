@@ -9,9 +9,9 @@ const MarkerSelector = props => {
     <div id="playerSelect" className="player-selector-modal">
       <div className="player-marker-selector">
         <h1>Choose Your Marker</h1>
-        <div className="marker-wrap">
+        <div className="ttt-marker-wrap">
           <div
-            className="marker select-x"
+            className="ttt-marker ttt-select-x"
             onClick={() => playerSelectMarker('X')}
             onKeyPress={e => {
               if (keyboardHandler(e)) playerSelectMarker('X');
@@ -22,7 +22,7 @@ const MarkerSelector = props => {
             X
           </div>
           <div
-            className="marker select-o"
+            className="ttt-marker ttt-select-o"
             onClick={() => playerSelectMarker('O')}
             onKeyPress={e => {
               if (keyboardHandler(e)) playerSelectMarker('O');

@@ -26,7 +26,7 @@
   }
 }
 
-.marker-wrap {
+.ttt-marker-wrap {
   display: flex;
   justify-content: space-around;
   position: absolute;
@@ -35,7 +35,7 @@
   width: 100%;
 }
 
-.marker {
+.ttt-marker {
   width: 75px;
   height: 75px;
   border-radius: 50%;
@@ -48,10 +48,10 @@
   cursor: pointer;
 }
 
-.select-x {
+.ttt-select-x {
   color: #046380;
 }
 
-.select-x {
+.ttt-select-x {
   color: #002f2f;
 }
