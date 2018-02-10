@@ -9,6 +9,7 @@
     "npm-run-all": "^4.0.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-helmet": "^5.2.0",
     "react-scripts": "^1.1.0"
   },
   "scripts": {
