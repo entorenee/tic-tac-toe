@@ -19,7 +19,7 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['react', 'prettier'],
-  extends: ['airbnb', 'prettier/react'],
+  extends: ['airbnb', 'prettier', 'prettier/react'],
   rules: {
     'react/jsx-filename-extension': 0,
     'arrow-parens': [2, 'as-needed'],
