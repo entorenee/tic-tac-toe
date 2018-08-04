@@ -45,7 +45,7 @@ class Cell extends Component {
 Cell.propTypes = {
   id: PropTypes.string.isRequired,
   cellValue: PropTypes.string.isRequired,
-  playerSelectCell: PropTypes.func.isRequired
+  playerSelectCell: PropTypes.func.isRequired,
 };
 
 export default Cell;

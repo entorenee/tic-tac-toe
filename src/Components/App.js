@@ -13,7 +13,7 @@ class App extends Component {
       currPlayer: 'X',
       player: '',
       computer: '',
-      gameOver: false
+      gameOver: false,
     };
 
     this.playerSelectCell = this.playerSelectCell.bind(this);
@@ -50,7 +50,7 @@ class App extends Component {
       const states = {
         cellValues: ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
         currPlayer: 'X',
-        gameOver: false
+        gameOver: false,
       };
       winnerInfo.innerHTML = '';
       for (let i = 0; i < cells.length; i += 1) {
@@ -93,7 +93,7 @@ class App extends Component {
         ['1', '4', '7'],
         ['2', '5', '8'],
         ['0', '4', '8'],
-        ['2', '4', '6']
+        ['2', '4', '6'],
       ];
 
       for (let i = 0; i < winningCombos.length; i += 1) {
@@ -157,7 +157,7 @@ class App extends Component {
       ['1', '4', '7'],
       ['2', '5', '8'],
       ['0', '4', '8'],
-      ['2', '4', '6']
+      ['2', '4', '6'],
     ];
     for (let i = 0; i < winningCombos.length; i += 1) {
       const arr = winningCombos[i];
