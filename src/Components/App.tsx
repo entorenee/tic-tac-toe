@@ -1,27 +1,25 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import Helmet from 'react-helmet';
 import Cell from './Cell';
 import MarkerSelector from './MarkerSelector';
 import '../style/App.css';
 
-class App extends Component {
-  constructor() {
-    super();
+type State = {
+  cellValues: string[],
+  computer: 'X' | 'O' | '',
+  currPlayer: 'X' | 'O',
+  gameOver: boolean,
+  player: 'X' | 'O' | '',
+}
 
-    this.state = {
-      cellValues: ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'], // Used to track who controls each space.
-      currPlayer: 'X',
-      player: '',
-      computer: '',
-      gameOver: false,
-    };
-
-    this.playerSelectCell = this.playerSelectCell.bind(this);
-    this.checkWinningCombos = this.checkWinningCombos.bind(this);
-    this.computerSelectCell = this.computerSelectCell.bind(this);
-    this.playerSelectMarker = this.playerSelectMarker.bind(this);
-    this.clearBoard = this.clearBoard.bind(this);
-  }
+class App extends React.Component<{}, State> {
+  state = {
+    cellValues: ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'], // Used to track who controls each space.
+    computer: '',
+    currPlayer: 'X',
+    gameOver: false,
+    player: '',
+  };
 
   componentDidUpdate() {
     const { cellValues, computer, currPlayer, gameOver } = this.state;
@@ -43,7 +41,7 @@ class App extends Component {
     }
   }
 
-  clearBoard() {
+  clearBoard = () => {
     setTimeout(() => {
       const winnerInfo = this.gameWinner;
       const cells = document.querySelectorAll('td');
@@ -60,7 +58,7 @@ class App extends Component {
     }, 3000);
   }
 
-  playerSelectMarker(marker) {
+  playerSelectMarker = (marker) => {
     const states = {};
     const computer = marker === 'X' ? 'O' : 'X';
     states.player = marker;
@@ -69,7 +67,7 @@ class App extends Component {
     this.setState({ ...states });
   }
 
-  playerSelectCell(cellValue, cellId) {
+  playerSelectCell = (cellValue, cellId) => {
     const { computer, currPlayer, gameOver, player } = this.state;
 
     if (cellValue === 'E' && currPlayer === player && gameOver === false) {
@@ -81,7 +79,7 @@ class App extends Component {
     }
   }
 
-  computerSelectCell() {
+  computerSelectCell = () => {
     const { cellValues, computer, player } = this.state;
 
     function checkForPotentialWinOrBlock(cells, playerToken) {
@@ -148,7 +146,7 @@ class App extends Component {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  checkWinningCombos(cellValues, currPlayer) {
+  checkWinningCombos = (cellValues, currPlayer) => {
     const winningCombos = [
       ['0', '1', '2'],
       ['3', '4', '5'],

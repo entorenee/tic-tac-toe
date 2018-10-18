@@ -1,10 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { keyboardHandler } from '../helpers';
 import '../style/MarkerSelector.css';
 
-const MarkerSelector = props => {
+type Props = {
+  playerSelectMarker: (string) => void
+}
+
+const MarkerSelector: React.SFC<Props> = props => {
   const { playerSelectMarker } = props;
+
   return (
     <div id="playerSelect" className="player-selector-modal">
       <div className="player-marker-selector">
@@ -36,10 +40,6 @@ const MarkerSelector = props => {
       </div>
     </div>
   );
-};
-
-MarkerSelector.propTypes = {
-  playerSelectMarker: PropTypes.func.isRequired,
 };
 
 export default MarkerSelector;
