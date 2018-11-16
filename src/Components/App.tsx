@@ -4,21 +4,23 @@ import Cell from './Cell';
 import MarkerSelector from './MarkerSelector';
 import '../style/App.css';
 
+type Markers = 'X' | 'O';
+
 type State = {
   cellValues: string[],
-  computer: 'X' | 'O' | '',
-  currPlayer: 'X' | 'O',
+  computer?: Markers,
+  currPlayer: Markers,
   gameOver: boolean,
-  player: 'X' | 'O' | '',
+  player?: Markers,
 }
 
 class App extends React.Component<{}, State> {
   state = {
     cellValues: ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'], // Used to track who controls each space.
-    computer: '',
+    computer: undefined,
     currPlayer: 'X',
     gameOver: false,
-    player: '',
+    player: undefined,
   };
 
   componentDidUpdate() {
@@ -58,13 +60,10 @@ class App extends React.Component<{}, State> {
     }, 3000);
   }
 
-  playerSelectMarker = (marker) => {
-    const states = {};
+  playerSelectMarker = (marker: 'X' | 'O') => {
     const computer = marker === 'X' ? 'O' : 'X';
-    states.player = marker;
-    states.computer = computer;
     document.getElementById('playerSelect').style.display = 'none';
-    this.setState({ ...states });
+    this.setState({ computer, player: marker });
   }
 
   playerSelectCell = (cellValue, cellId) => {

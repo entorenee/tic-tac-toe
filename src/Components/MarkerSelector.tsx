@@ -3,7 +3,7 @@ import { keyboardHandler } from '../helpers';
 import '../style/MarkerSelector.css';
 
 type Props = {
-  playerSelectMarker: (string) => void
+  playerSelectMarker: (marker: string) => void
 }
 
 const MarkerSelector: React.SFC<Props> = props => {
