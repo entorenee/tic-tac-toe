@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { keyboardHandler } from '../helpers';
-import '../style/MarkerSelector.css';
+import './style.scss';
 
 type Props = {
   playerSelectMarker: (marker: string) => void

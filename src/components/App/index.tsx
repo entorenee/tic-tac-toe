@@ -2,7 +2,7 @@ import * as React from 'react';
 import Helmet from 'react-helmet';
 import Cell from './Cell';
 import MarkerSelector from './MarkerSelector';
-import '../style/App.css';
+import './style.scss';
 
 type Markers = 'X' | 'O';
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 import { keyboardHandler } from "../helpers.js";
-import "../style/Cell.css";
+import "./style.scss";
 
 type Props = {
   id: string;
