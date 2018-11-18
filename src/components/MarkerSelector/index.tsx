@@ -1,10 +1,11 @@
-import * as React from 'react';
-import { keyboardHandler } from '../helpers';
-import './style.scss';
+import * as React from "react";
+
+import { Marker } from "../App";
+import "./style.scss";
 
 type Props = {
-  playerSelectMarker: (marker: string) => void
-}
+  playerSelectMarker: (marker: Marker) => void;
+};
 
 const MarkerSelector: React.SFC<Props> = props => {
   const { playerSelectMarker } = props;
@@ -14,28 +15,20 @@ const MarkerSelector: React.SFC<Props> = props => {
       <div className="player-marker-selector">
         <h1>Choose Your Marker</h1>
         <div className="ttt-marker-wrap">
-          <div
+          <button
             className="ttt-marker ttt-select-x"
-            onClick={() => playerSelectMarker('X')}
-            onKeyPress={e => {
-              if (keyboardHandler(e)) playerSelectMarker('X');
-            }}
-            role="button"
-            tabIndex={0}
+            onClick={() => playerSelectMarker("X")}
+            type="button"
           >
             X
-          </div>
-          <div
+          </button>
+          <button
             className="ttt-marker ttt-select-o"
-            onClick={() => playerSelectMarker('O')}
-            onKeyPress={e => {
-              if (keyboardHandler(e)) playerSelectMarker('O');
-            }}
-            role="button"
-            tabIndex={0}
+            onClick={() => playerSelectMarker("O")}
+            type="button"
           >
             O
-          </div>
+          </button>
         </div>
       </div>
     </div>

@@ -1,34 +1,34 @@
 import * as React from "react";
 import classNames from "classnames";
-import { keyboardHandler } from "../helpers.js";
+
+import { CellValue, Marker } from "../App";
 import "./style.scss";
 
 type Props = {
-  id: string;
-  cellValue: string;
-  playerSelectCell: (value: string, id: string) => void;
+  cellValue: CellValue;
+  currPlayer: Marker;
+  id: number;
+  player?: Marker;
+  playerSelectCell: (id: number) => void;
 };
 
 const Cell: React.SFC<Props> = props => {
-  const { cellValue, id, playerSelectCell } = props;
+  const { cellValue, currPlayer, id, player, playerSelectCell } = props;
   const cellDisplay = cellValue !== "E" ? cellValue : "";
 
   return (
     <td className={`cells cell-${id}`}>
-      <div
+      <button
         className={classNames({
           "o-marker": cellValue === "O",
           "x-marker": cellValue === "X"
         })}
-        onClick={() => playerSelectCell(cellValue, id)}
-        onKeyPress={e => {
-          if (keyboardHandler(e)) playerSelectCell(cellValue, id);
-        }}
-        role="button"
-        tabIndex={0}
+        disabled={cellValue !== "E" || currPlayer !== player}
+        onClick={() => playerSelectCell(id)}
+        type="button"
       >
         {cellDisplay}
-      </div>
+      </button>
     </td>
   );
 };
