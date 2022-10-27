@@ -1,7 +1,6 @@
 {
   "name": "tic-tac-toe",
   "version": "0.1.0",
-  "homepage": "http://dslemay.com/projects/tic-tac-toe/",
   "private": true,
   "dependencies": {
     "gulp": "^3.9.1",
